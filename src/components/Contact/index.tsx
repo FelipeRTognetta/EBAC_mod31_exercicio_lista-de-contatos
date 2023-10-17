@@ -48,13 +48,13 @@ const Contact = ({
 
   return (
     <S.Card>
+      {editing && <em>Editando: </em>}
       <Nome
         as="textarea"
         disabled={!editing}
         value={name}
         onChange={(evento) => setName(evento.target.value)}
       >
-        {editing && <em>Editando: </em>}
         {name}
       </Nome>
       <S.Info>
