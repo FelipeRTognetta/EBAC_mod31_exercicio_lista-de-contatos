@@ -4,6 +4,13 @@ import variaveis from '../../styles/variaveis'
 export const Card = styled.div`
   padding: 16px;
   margin-bottom: 16px;
+
+  textarea {
+    resize: none;
+    border: none;
+    background-color: transparent;
+    width: 100%;
+  }
 `
 
 export const Info = styled.div`
@@ -22,8 +29,4 @@ export const Icon = styled.svg`
 `
 export const InfoItem = styled.textarea`
   font-family: 'Roboto Mono', monospace;
-  width: 100%;
-  resize: none;
-  border: none;
-  background-color: transparent;
 `

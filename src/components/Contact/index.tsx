@@ -10,7 +10,7 @@ import { Botao, RedButton, Nome } from '../../styles'
 type Props = Contato
 
 const Contact = ({
-  name,
+  name: nameOriginal,
   mail: mailOriginal,
   phone: phoneOriginal,
   id
@@ -19,6 +19,7 @@ const Contact = ({
   const [editing, setEditing] = useState(false)
   const [mail, setMail] = useState('')
   const [phone, setPhone] = useState('')
+  const [name, setName] = useState('')
 
   useEffect(() => {
     if (mailOriginal.length > 0) {
@@ -32,15 +33,27 @@ const Contact = ({
     }
   }, [phoneOriginal])
 
+  useEffect(() => {
+    if (nameOriginal.length > 0) {
+      setName(nameOriginal)
+    }
+  }, [nameOriginal])
+
   function cancelEditing() {
     setEditing(false)
     setMail(mailOriginal)
     setPhone(phoneOriginal)
+    setName(nameOriginal)
   }
 
   return (
     <S.Card>
-      <Nome>
+      <Nome
+        as="textarea"
+        disabled={!editing}
+        value={name}
+        onChange={(evento) => setName(evento.target.value)}
+      >
         {editing && <em>Editando: </em>}
         {name}
       </Nome>
